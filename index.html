@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Score Calculator</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            padding: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            margin: auto;
+            animation: slideIn 1s ease-out;
+            position: relative;
+        }
+        input {
+            padding: 12px;
+            width: 85%;
+            margin: 12px 0;
+            border-radius: 5px;
+            border: 2px solid #ff5e62;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+        input:focus {
+            border-color: #ff9966;
+            box-shadow: 0px 0px 10px #ff9966;
+            outline: none;
+        }
+        button {
+            background: linear-gradient(to right, #ff5e62, #ff9966);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+        button:hover {
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            transform: scale(1.07);
+            box-shadow: 0px 5px 15px rgba(255, 94, 98, 0.5);
+        }
+        .result {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 5px;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .icon {
+            width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+            animation: bounce 1.5s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://cdn-icons-png.flaticon.com/512/201/201818.png" class="icon" alt="Student Icon">
+        <h2 style="color: #ff5e62;">Exam Score Calculator</h2>
+        <p style="color: #555;">Enter your marks out of 500:</p>
+        <input type="number" id="marks" placeholder="Enter your marks" max="500">
+        <button onclick="calculateResult()">Calculate</button>
+        <div class="result" id="result"></div>
+    </div><script>
+    function calculateResult() {
+        let marks = document.getElementById('marks').value;
+        let percentage = (marks / 500) * 100;
+        let resultText = `You scored ${percentage.toFixed(2)}% - `;
+        let motivation = "";
+        let bgColor = "";
+        
+        if (percentage >= 33) {
+            resultText += "You Passed! 🎉";
+            motivation = "Great job! Keep striving for excellence!";
+            bgColor = "#28a745";
+        } else {
+            resultText += "You Failed. 😞";
+            motivation = "Failures are lessons. Keep pushing forward!";
+            bgColor = "#dc3545";
+        }
+        
+        document.getElementById('result').innerHTML = `<strong>${resultText}</strong><br>${motivation}`;
+        document.getElementById('result').style.background = bgColor;
+        document.getElementById('result').style.color = "white";
+    }
+</script>
+
+</body>
+</html>
+
+
+By prince kumar
